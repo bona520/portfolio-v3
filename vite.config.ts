@@ -13,6 +13,7 @@ export default (({mode}: { mode: string }) => {
 			open: true, // Automatically open the browser
 		},
 		// Build configuration
+    base: "/portfolio-v3/",
 		build: {
 			rollupOptions: {
 				// input: 'src/main.tsx',
