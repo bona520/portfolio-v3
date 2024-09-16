@@ -33,7 +33,7 @@
         var(--line) 1px,
         transparent 1px var(--size)) 50% 50% / var(--size) var(--size),
       linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size);
-    mask: linear-gradient(-20deg, transparent 50%, white);
+    mask: linear-gradient(-20deg, transparent 50%, rgba(255, 255, 255, 0.183));
     top: 0;
     transform-style: flat;
     pointer-events: none;
