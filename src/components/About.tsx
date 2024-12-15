@@ -18,16 +18,16 @@ export default function About() {
                     <h4 className="mt-3 md:mt-4 text-sm md:text-base">Here are a few technologies I’ve been working with recently:</h4>
                     <div className="mt-6 flex justify-between md:justify-start gap-x-10">
                         <ul className="space-y-4">
-                            <li className="flex hover:text-custom-purple text-sm md:text-base"><ArrowRight2 color="#383838" variant="Bold" />JavaScript (ES6+)</li>
-                            <li className="flex hover:text-custom-purple text-sm md:text-base"><ArrowRight2 color="#383838" variant="Bold" />React JS</li>
-                            <li className="flex hover:text-custom-purple text-sm md:text-base"><ArrowRight2 color="#383838" variant="Bold" />Next JS</li>
-                            <li className="flex hover:text-custom-purple text-sm md:text-base"><ArrowRight2 color="#383838" variant="Bold" />Remix JS</li>
+                            <li className="flex items-center hover:text-custom-purple text-sm md:text-base"><ArrowRight2 color="#383838" variant="Bold" />JavaScript (ES6+)</li>
+                            <li className="flex items-center hover:text-custom-purple text-sm md:text-base"><ArrowRight2 color="#383838" variant="Bold" />React JS</li>
+                            <li className="flex items-center hover:text-custom-purple text-sm md:text-base"><ArrowRight2 color="#383838" variant="Bold" />Next JS</li>
+                            <li className="flex items-center hover:text-custom-purple text-sm md:text-base"><ArrowRight2 color="#383838" variant="Bold" />Remix JS</li>
                         </ul>
                         <ul className="space-y-4">
-                            <li className="flex hover:text-custom-purple text-sm md:text-base"><ArrowRight2 color="#383838" variant="Bold" />Express JS</li>
-                            <li className="flex hover:text-custom-purple text-sm md:text-base"><ArrowRight2 color="#383838" variant="Bold" />Typescript</li>
-                            <li className="flex hover:text-custom-purple text-sm md:text-base"><ArrowRight2 color="#383838" variant="Bold" />Tailwind CSS</li>
-                            <li className="flex hover:text-custom-purple text-sm md:text-base"><ArrowRight2 color="#383838" variant="Bold" />Figma</li>
+                            <li className="flex items-center hover:text-custom-purple text-sm md:text-base"><ArrowRight2 color="#383838" variant="Bold" />Express JS</li>
+                            <li className="flex items-center hover:text-custom-purple text-sm md:text-base"><ArrowRight2 color="#383838" variant="Bold" />Typescript</li>
+                            <li className="flex items-center hover:text-custom-purple text-sm md:text-base"><ArrowRight2 color="#383838" variant="Bold" />Tailwind CSS</li>
+                            <li className="flex items-center hover:text-custom-purple text-sm md:text-base"><ArrowRight2 color="#383838" variant="Bold" />Figma</li>
                         </ul>
                     </div>
                 </div>
