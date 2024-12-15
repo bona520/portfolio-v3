@@ -3,7 +3,7 @@ import me from '../assets/images/me.png';
 
 export default function About() {
     return (
-        <div className="mt-10 md:mt-28 w-full">
+        <div className="mt-10 md:mt-28 w-full" id="about">
             <h1 className="text-2xl lg:text-4xl font-bold">About</h1>
             <div className="flex items-start flex-wrap md:flex-nowrap gap-x-10">
                 <div className="mt-4 md:mt-8">

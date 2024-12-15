@@ -7,6 +7,25 @@ export default {
 
   theme: {
     extend: {
+      keyframes: {
+        'top-to-bottom': {
+          '0%': { transform: 'translateY(-70%)' },
+          '50%': { transform: 'translateY(0)' },
+          '100%': { transform: 'translateY(-70%)' },
+        },
+        'bounce': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
+        'fade-in-out': {
+          '0%, 100%': { opacity: 0 },
+          '50%': { opacity: 1 },
+        },
+      },
+      animation: {
+        'top-to-bottom': 'top-to-bottom 4s ease-in-out infinite',
+        'bounce': 'bounce 3s infinite',
+      },
       colors: {
         'primary': "#212121",
         'secondary': "#383838",
