@@ -25,6 +25,7 @@ export default {
       animation: {
         'top-to-bottom': 'top-to-bottom 4s ease-in-out infinite',
         'bounce': 'bounce 3s infinite',
+        'fade-in-out': 'fade-in-out 4s ease-in-out infinite',
       },
       colors: {
         'primary': "#212121",
