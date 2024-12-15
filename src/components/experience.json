@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "name": "CA Invention",
+        "position": "UI UX Design | Junior Frontend Developer",
+        "duration": "10 Months",
+        "date": "Aug 2022 - Jun 2022"
+    },
+    {
+        "id": 2,
+        "name": "Phsar Tech Solutions Co., Ltd",
+        "position": "Junior Backend Developer",
+        "duration": "11 Months",
+        "date": "Sep 2021 - Aug 2022"
+    },
+    {
+        "id": 3,
+        "name": "Ninja Marketing Cambodia",
+        "position": "Graphic Design",
+        "duration": "6 Months",
+        "date": "Mar 2021 - Sep 2021"
+    },
+    {
+        "id": 4,
+        "name": "Kampuh Trading Co., Ltd",
+        "position": "Graphic Design",
+        "duration": "1 Year 4 Months",
+        "date": "Dec 2019 - Mar 2021"
+    }
+]

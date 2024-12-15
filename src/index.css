@@ -3,68 +3,121 @@
 @tailwind utilities;
 
 @layer base {
+    *,
+    *:after,
+    *:before {
+        box-sizing: border-box;
+    }
 
-  *,
-  *:after,
-  *:before {
-    box-sizing: border-box;
-  }
+    body {
+        background: #161616;
+    }
 
-  body {
-    background: #161616;
-  }
+    html {
+        color-scheme: dark only;
+    }
 
-  html {
-    color-scheme: dark only;
-  }
+    [data-theme="light"] {
+        color-scheme: light only;
+    }
 
-  [data-theme='light'] {
-    color-scheme: light only;
-  }
+    body::before {
+        --size: 25px;
+        --line: color-mix(in lch, canvasText, transparent 70%);
+        content: "";
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        background: linear-gradient(
+                    90deg,
+                    var(--line) 1px,
+                    transparent 1px var(--size)
+                )
+                50% 50% / var(--size) var(--size),
+            linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50%
+                50% / var(--size) var(--size);
+        mask: linear-gradient(
+            -20deg,
+            transparent 50%,
+            rgba(255, 255, 255, 0.183)
+        );
+        top: 0;
+        transform-style: flat;
+        pointer-events: none;
+        z-index: -1;
+    }
 
-  body::before {
-    --size: 25px;
-    --line: color-mix(in lch, canvasText, transparent 70%);
-    content: '';
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    background: linear-gradient(90deg,
-        var(--line) 1px,
-        transparent 1px var(--size)) 50% 50% / var(--size) var(--size),
-      linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size);
-    mask: linear-gradient(-20deg, transparent 50%, rgba(255, 255, 255, 0.183));
-    top: 0;
-    transform-style: flat;
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  .fff {
-    @apply !bg-red-500 text-black p-4 mt-4;
-  }
+    .button-link {
+        @apply flex gap-x-2 bg-secondary hover:bg-secondary/60 rounded-lg px-3 py-2 text-sm md:text-base;
+    }
 }
 
+::selection {
+    background: #755fff; /* Change this to your desired background color */
+    color: #ffffff; /* Change this to your desired text color */
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    background: transparent !important;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4747477c;
+    border-radius: 10px;
+    transition: 0.05s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #30303099;
+}
+
+::-webkit-scrollbar:horizontal {
+    height: 4px;
+    background: transparent !important;
+}
+.ui-ux-design::after {
+    content: "";
+    position: absolute;
+    top: 90%;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHAAAAAICAYAAAAhkXvnAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAH1SURBVHgB5ZbRbcIwEIbvQnkuG5ANygaFCTpCs0F5KO99R6jtAJXoBnSDjEA3MBNgXovA/S+2kQlRQ0JQqfpLJzskTu7357Nh+kcaJqaDptNGbBHSj2ybyRB1pWWiBe7ryZRn9MtCznHb5tiT/JBbLH0kG6Ovmf6oPIyWNZSBcAA67OC4fmzM7rqq0vE7D+jMEkjw0XMebiRnFmDleasruhDlqiMuABL7PozFUi55Fa3G3GPah7GrV29tKxPWLxiuqQGJt7avHKJr13YcpD0vfJi35KCQ55yZVITAmM81fnuZ8nkr0Je/ByLJG1cV5KA4IHUqRAehMhAwx7b1YPQ2IiUPT954EeQlldvH/Vs2lOS/jRxTvGM2nvIrHaFgN5Aq6hrni9xWR+XeFGIuOQOQgNIhpJ8GHg1QYEhbsmU1C8RD8UAMzqYWLUMYFfLPoCHvB0xqVgHht/H+WSui9MvQR37SwnOI7CKsCijzJIGx4kcZiYjmdbyE4sfEDMmCkI80BcNLUQ4IloysMhUC2WxoVbbSTtEoMQkm+pn2fShEigpNcW9VsCB7u+26XH7h1aqiU8Sje7Ok4wD5s0MFZ0dhhZwbSFXBo6HTdFBBHlDdHaEpXa2ZBvgncycXe+fHhcKoI0z0E3zJTpOvQFHhli2g5Py8dP/fMmcdr4PszCMAAAAASUVORK5CYII=");
+}
+.active::after {
+    content: "";
+    position: absolute;
+    top: 90%;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEcAAAAJCAYAAABg4jEDAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHLSURBVHgB1ZZRTsJAEIb/KfDODewNwBv0BuoJ7BEwmvjqOzFyAQPegBtYblBvUE9geRXLONPuwtIUClSM/smmZKD7z34zs4HwDzQIuSsPXeloQilOIPHwO0DAQI+AvoRuCH9EmlxLkvKAM0nQp2L1mWHB5JJY8kk4bwJJYYtX4BUQemAErocxGrTxi9KkpDo+9NBFhSwAXxJ08irEFXtw8X7eRdjT00DvqS9pd3C+R1m6XyTmuuLhmGYngbMTglEFgERWzPokpMS4RAFh9Y58F5GHh9GYkm2+dSCMXyrPWP08D3HmIXp8pvfyfo3Gasco+DteS5Z6SELiyZLfvi0kpmNyG7K2+jXWYOxBJgJlqtXEASAcKfRIQajfcEIx9hDVHD6fd5NE13SBxvrgVXtXKTUQYgEQs0KQxKqqY32k055kz9DGbJcs5DB1XVhSbH3l88yCxxGiu5AHYnbhxLoKoHwRbtFBEKp0L90nXq+8Hh/dcypl69ZAyL3djmgCokptmW0FE7hB3kxAl1YjrRoFNFQmY0TYAKAFCTUJ9z6yo6iX5aEFOFbtBeGqQ/ncFmLMly18ZBnmp/pP4eoLeNGx4WIlZIpwTBf+tL4BeMjsA/1A/5gAAAAASUVORK5CYII=");
+}
 @media screen and (min-width: 1280px) {
-  body::before {
-    --size: 45px !important;
-  }
+    body::before {
+        --size: 45px !important;
+    }
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1280px) {
-  body::before {
-    --size: 35px !important;
-  }
+    body::before {
+        --size: 35px !important;
+    }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-  body::before {
-    --size: 25px !important;
-  }
+    body::before {
+        --size: 25px !important;
+    }
 }
 
 @media screen and (min-width: 640px) and (max-width: 768px) {
-  body::before {
-    --size: 15px !important;
-  }
+    body::before {
+        --size: 15px !important;
+    }
 }

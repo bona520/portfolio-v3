@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "name": "SETEC Institute",
+        "major": "Bachelor Degree in Management Information System ",
+        "startDate": "Oct 2018",
+        "endDate": "Aug 2022"
+    },
+    {
+        "id": 2,
+        "name": "Rean Web",
+        "major": "Short Course  PHP Web development",
+        "startDate": "Oct 2020",
+        "endDate": "Feb 2021"
+    },
+    {
+        "id": 3,
+        "name": "Rean Design",
+        "major": "Short Course Design",
+        "startDate": "May 2020",
+        "endDate": "Jul 2020"
+    },
+    {
+        "id": 4,
+        "name": "Angroka High School ",
+        "major": "High School",
+        "startDate": "Oct 2015",
+        "endDate": "Aug 2018"
+    }
+]
