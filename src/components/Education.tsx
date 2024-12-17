@@ -11,10 +11,10 @@ export default function Education() {
                         key={index}
                         className={`flex gap-x-3 lg:gap-x-8 mt-3 lg:mt-8 items-start pb-8 ${index !== education.length - 1 ? 'border-b border-secondary' : ''}`}
                     >
-                        <div className="bg-white rounded-2xl md:rounded-3xl p-3 md:p-4">
+                        <div className="bg-secondary rounded-2xl md:rounded-3xl p-3 md:p-4">
                             <Book1
                                 size={24}
-                                color="#999"
+                                color="#F6F4FA20"
                                 variant="Bold"
                             />
                         </div>

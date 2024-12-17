@@ -16,10 +16,10 @@ export default function Experience() {
             <h1 className="text-2xl lg:text-4xl font-bold mb-10">Experience</h1>
 
             <div className="flex gap-x-3 lg:gap-x-8 mt-3 lg:mt-8 items-start border-b border-secondary pb-8 w-full">
-                <div className="bg-white rounded-2xl md:rounded-3xl p-3 md:p-4">
+                <div className="bg-secondary rounded-2xl md:rounded-3xl p-3 md:p-4">
                     <ShoppingBag
                         size={24}
-                        color="#999"
+                        color="#F6F4FA20"
                         variant="Bold"
                     />
                 </div>
@@ -40,10 +40,10 @@ export default function Experience() {
                         key={index}
                         className={`flex gap-x-3 lg:gap-x-8 mt-3 lg:mt-8 items-start pb-8 ${index !== experience.length - 1 ? 'border-b border-secondary' : ''}`}
                     >
-                        <div className="bg-white rounded-2xl md:rounded-3xl p-3 md:p-4">
+                        <div className="bg-secondary rounded-2xl md:rounded-3xl p-3 md:p-4">
                             <ShoppingBag
                                 size={24}
-                                color="#999"
+                                color="#F6F4FA20"
                                 variant="Bold"
                             />
                         </div>
