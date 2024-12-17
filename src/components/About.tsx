@@ -7,7 +7,7 @@ export default function About() {
             <h1 className="text-2xl lg:text-4xl font-bold">About</h1>
             <div className="flex items-start flex-wrap md:flex-nowrap gap-x-10">
                 <div className="mt-4 md:mt-8">
-                    <p className="text-sm md:text-base">
+                    <p className="text-sm md:text-base !leading-8">
                         I am a dedicated Front-End Developer and UI/UX Designer, with my design journey beginning
                         between 2019 and 2021, where I gained expertise in tools like Photoshop, Illustrator, and Figma.
                         Since 2021, I have been specializing in web development, utilizing technologies such as JavaScript,
