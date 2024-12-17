@@ -19,7 +19,7 @@ export default function Experience() {
                 <div className="bg-secondary rounded-2xl md:rounded-3xl p-3 md:p-4">
                     <ShoppingBag
                         size={24}
-                        color="#F6F4FA20"
+                        color="#545454"
                         variant="Bold"
                     />
                 </div>
@@ -43,7 +43,7 @@ export default function Experience() {
                         <div className="bg-secondary rounded-2xl md:rounded-3xl p-3 md:p-4">
                             <ShoppingBag
                                 size={24}
-                                color="#F6F4FA20"
+                                color="#545454"
                                 variant="Bold"
                             />
                         </div>

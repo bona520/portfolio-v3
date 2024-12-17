@@ -68,19 +68,19 @@ export default function Home() {
                         onClick={() => window.location.href = "#about"}
                     >
                         <Notepad2 size="32" color="#fff" />
-                        <span className={currentHash === "#about" ? "active relative" : ""} >About Me</span>
+                        <span className={`${currentHash === "#about" ? "active relative" : ""} text-sm`} >About Me</span>
                     </div>
                     <div
                         className="inline-flex items-center gap-x-4 cursor-pointer"
                         onClick={() => window.location.href = "#experience"}
                     >
-                        <ShoppingBag size="32" color="#fff" /> <span className={currentHash === "#experience" ? "active relative" : ""} >Experience</span>
+                        <ShoppingBag size="32" color="#fff" /> <span className={`${currentHash === "#experience" ? "active relative" : ""} text-sm`} >Experience</span>
                     </div>
                     <div
                         className="inline-flex items-center gap-x-4 cursor-pointer"
                         onClick={() => window.location.href = "#education"}
                     >
-                        <Book1 size="32" color="#fff" /> <span className={currentHash === "#education" ? "active relative" : ""}  >Education</span>
+                        <Book1 size="32" color="#fff" /> <span className={`${currentHash === "#education" ? "active relative" : ""} text-sm`}  >Education</span>
                     </div>
                 </div>
                 <button className="md:hidden" onClick={toggleMenu}>
@@ -96,19 +96,19 @@ export default function Home() {
                         onClick={() => window.location.href = "#about"}
                     >
                         <Notepad2 size="24" color="#fff" />
-                        <span className={currentHash === "#about" ? "active relative" : ""} >About Me</span>
+                        <span className={`${currentHash === "#about" ? "active relative" : ""} text-sm`} >About Me</span>
                     </div>
                     <div
                         className="inline-flex items-center gap-x-4 cursor-pointer"
                         onClick={() => window.location.href = "#experience"}
                     >
-                        <ShoppingBag size="24" color="#fff" /> <span className={currentHash === "#experience" ? "active relative" : ""} >Experience</span>
+                        <ShoppingBag size="24" color="#fff" /> <span className={`${currentHash === "#experience" ? "active relative" : ""} text-sm`} >Experience</span>
                     </div>
                     <div
                         className="inline-flex items-center gap-x-4 cursor-pointer"
                         onClick={() => window.location.href = "#education"}
                     >
-                        <Book1 size="24" color="#fff" /> <span className={currentHash === "#education" ? "active relative" : ""}  >Education</span>
+                        <Book1 size="24" color="#fff" /> <span className={`${currentHash === "#education" ? "active relative" : ""} text-sm`}  >Education</span>
                     </div>
                 </div>
             )}
