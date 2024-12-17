@@ -119,7 +119,7 @@ export default function Home() {
             </div>
             <p className="text-center lg:text-start text-sm md:text-base">Hi, my name is</p>
             <h1 className="text-5xl xl:text-6xl font-bold text-center lg:text-start ">Orn Bona</h1>
-            <p className="mt-6 !leading-7 text-sm md:text-base">I’m a Web Developer and <span className="text-custom-purple relative ui-ux-design">UI/UX Designer</span>, dedicated to creating user-friendly and visually engaging digital experiences.<br />
+            <p className="mt-6 !leading-6 md:!leading-7 text-sm md:text-base">I’m a Web Developer and <span className="text-custom-purple relative ui-ux-design">UI/UX Designer</span>, dedicated to creating user-friendly and visually engaging digital experiences.<br />
                 Combining design principles with technical skills, I specialize in building responsive websites that are both functional and aesthetically pleasing.</p>
             <div className="w-full mt-6 flex items-center justify-center md:items-start md:justify-start gap-x-4">
                 <button className="button-link" onClick={telegram}><Send size="24" />Telegram</button>
