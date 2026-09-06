@@ -1,5 +1,5 @@
-import experience from "./experience.json";
-import Timeline, { type TimelineEntry } from "./Timeline";
+import experience from "@data/experience.json";
+import Timeline, { type TimelineEntry } from "@shared/Timeline";
 
 function tenure(startISO: string) {
     const start = new Date(startISO);

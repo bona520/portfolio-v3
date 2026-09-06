@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import Squiggle from "@svg/Squiggle";
 import { Book1, Briefcase, Home2, Notepad2, type Icon } from "iconsax-react";
-import { Logo } from "./Icon";
-import Squiggle from "./svg/Squiggle";
+import Logo from "@svg/Logo";
 
 type Section = { id: string; label: string; icon: Icon };
 
@@ -56,14 +56,13 @@ export default function Navbar() {
                         <a
                             key={id}
                             href={`#${id}`}
-                            className={`px-3 py-1.5 transition-colors ${
-                                active === id ? "text-white" : "text-snow/50 hover:text-white"
-                            }`}
+                            className={`px-3 py-1.5 transition-colors ${active === id ? "text-white" : "text-snow/50 hover:text-white"
+                                }`}
                         >
                             <span className="relative">
                                 {label}
                                 {active === id && (
-                                    <Squiggle className="animate-draw pointer-events-none absolute -bottom-2 left-0 h-2 w-full text-custom-purple" />
+                                    <Squiggle className="animate-wave-draw pointer-events-none absolute -bottom-2 left-0 h-2 w-full text-custom-purple" />
                                 )}
                             </span>
                         </a>
@@ -82,9 +81,8 @@ export default function Navbar() {
                             <a
                                 key={id}
                                 href={`#${id}`}
-                                className={`flex h-14 flex-col items-center justify-center gap-1 px-0.5 text-center transition-opacity active:opacity-60 ${
-                                    active === id ? "text-custom-purple" : "text-snow/40"
-                                }`}
+                                className={`flex h-14 flex-col items-center justify-center gap-1 px-0.5 text-center transition-opacity active:opacity-60 ${active === id ? "text-custom-purple" : "text-snow/40"
+                                    }`}
                             >
                                 <TabIcon
                                     size={20}

@@ -1,5 +1,5 @@
-import education from "./education.json";
-import Timeline, { type TimelineEntry } from "./Timeline";
+import education from "@data/education.json";
+import Timeline, { type TimelineEntry } from "@shared/Timeline";
 
 export default function Education() {
     const entries: TimelineEntry[] = education.map((item) => ({

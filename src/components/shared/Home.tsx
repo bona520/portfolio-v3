@@ -9,17 +9,17 @@ import {
     type MotionValue,
     type Variants,
 } from "motion/react";
-import ReactJS from "./svg/ReactJS";
-import NextJS from "./svg/NextJS";
-import NestJS from "./svg/NestJS";
-import TypeScript from "./svg/Typescript";
-import Tailwind from "./svg/Tailwind";
-import Photoshop from "./svg/PhotoShop";
-import Illustrator from "./svg/Illstrator";
-import Figma from "./svg/Figma";
-import KbachPattern from "./svg/KbachPattern";
-import NagaHero from "./svg/NagaHero";
-import PkaRomdoulHeroOne from "./svg/PkaRomdoulHeroOne";
+import ReactJS from "@svg/ReactJS";
+import NextJS from "@svg/NextJS";
+import NestJS from "@svg/NestJS";
+import TypeScript from "@svg/Typescript";
+import Tailwind from "@svg/Tailwind";
+import Photoshop from "@svg/PhotoShop";
+import Illustrator from "@svg/Illstrator";
+import Figma from "@svg/Figma";
+import KbachPattern from "@svg/KbachPattern";
+import NagaHero from "@svg/NagaHero";
+import PkaRomdoulHeroOne from "@svg/PkaRomdoulHeroOne";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -358,7 +358,7 @@ export default function Home() {
     return (
         <section
             id="home"
-            className="relative flex min-h-[88svh] scroll-mt-24 flex-col justify-center overflow-hidden pt-24 pb-16 md:pt-28"
+            className="relative flex h-dvh scroll-mt-24 flex-col justify-center overflow-hidden pt-24 pb-16 md:pt-28"
         >
             {/* decorative kbach backdrop */}
             <KbachPattern className="pointer-events-none opacity-40 absolute -top-24 left-1/2 -z-10 h-[130%] w-[130%] -translate-x-1/2 text-custom-purple/[0.07] [-webkit-mask-image:radial-gradient(60%_55%_at_45%_40%,#000,transparent_72%)] [mask-image:radial-gradient(60%_55%_at_45%_40%,#000,transparent_72%)]" />

@@ -1,11 +1,10 @@
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import About from "./components/About";
-import Education from "./components/Education";
-import Experience from "./components/Experience";
-import Footer from "./components/Footer";
-import Home from "./components/Home";
-import Navbar from "./components/Navbar";
+import About from "@shared/About";
+import Education from "@shared/Education";
+import Experience from "@shared/Experience";
+import Footer from "@layout/Footer";
+import Home from "@shared/Home";
+import Navbar from "@layout/Navbar";
+import ScrollToTop from "@shared/ScrollToTop";
 
 export default function App() {
   return (
@@ -22,8 +21,7 @@ export default function App() {
         <Education />
         <Footer />
       </main>
-
-      <ToastContainer />
+      <ScrollToTop />
     </div>
   );
 }

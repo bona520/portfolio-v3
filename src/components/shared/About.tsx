@@ -1,5 +1,5 @@
 import { motion, type Variants } from "motion/react";
-import me from "../assets/images/me.png";
+import me from "@assets/images/me.png";
 
 const rise: Variants = {
     hidden: { opacity: 0, y: 24 },

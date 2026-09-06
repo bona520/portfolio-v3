@@ -18,7 +18,29 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@": ["./src"],
+      "@/*": ["./src/*"],
+      "@assets": ["./src/assets"],
+      "@assets/*": ["./src/assets/*"],
+      "@components": ["./src/components"],
+      "@components/*": ["./src/components/*"],
+      "@ui": ["./src/components/ui"],
+      "@ui/*": ["./src/components/ui/*"],
+      "@shared": ["./src/components/shared"],
+      "@shared/*": ["./src/components/shared/*"],
+      "@layout": ["./src/components/layout"],
+      "@layout/*": ["./src/components/layout/*"],
+      "@svg": ["./src/components/svg"],
+      "@svg/*": ["./src/components/svg/*"],
+      "@data": ["./src/data"],
+      "@data/*": ["./src/data/*"],
+      "@libs": ["./src/libs"],
+      "@libs/*": ["./src/libs/*"],
+      "@styles": ["./src/styles"],
+      "@styles/*": ["./src/styles/*"]
+    },
   },
   "include": ["src"]
 }

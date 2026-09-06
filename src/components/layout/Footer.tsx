@@ -1,5 +1,5 @@
-import { ArrowUp2} from "iconsax-react";
-import { Logo } from "./Icon";
+import { ArrowUp2 } from "iconsax-react";
+import Logo from "@svg/Logo";
 
 export default function Footer() {
     const year = new Date().getFullYear();

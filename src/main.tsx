@@ -1,7 +1,11 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
-import './index.css'
+import '@fontsource-variable/inter'
+import '@styles/index.css'
+import { initDisableDevtool } from '@libs/utils.ts'
+
+initDisableDevtool()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
