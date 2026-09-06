@@ -1,15 +1,36 @@
-import { Figma } from "iconsax-react";
-
+import { ArrowUp2} from "iconsax-react";
+import { Logo } from "./Icon";
 
 export default function Footer() {
-    const fullYear = new Date().getFullYear();
-    function viewFigma() {
-        window.open('https://www.figma.com/proto/MnH2rzWvMNFVoIhIiym7eS/Portfolio-V3?page-id=0%3A1&node-id=1-2&node-type=canvas&t=LcQyaVeJ7LwfopL5-0&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1%3A2', '_blank');
-    }
+    const year = new Date().getFullYear();
+
+
+    const linkClass =
+        "flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-snow/60 transition-colors hover:border-custom-purple hover:text-white";
+
     return (
-        <div className="mt-4 md:mt-8 flex items-center flex-col gap-3 md:gap-4">
-            <h6 className="text-base md:text-md">Designed and Build by Orn Bona ({fullYear})</h6>
-            <div className="flex gap-2 text-white/50 cursor-pointer" onClick={() => viewFigma()}> <Figma size="24" /> <span>Figma File</span></div>
-        </div>
+        <footer id="contact" className="mt-16 md:mt-24 scroll-mt-24 border-t border-white/10 pt-8">
+            <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
+                <div className="flex items-center gap-3">
+                    <Logo className="h-7 w-auto" />
+                    <div className="text-center md:text-left">
+                        <p className="text-sm font-semibold">Orn Bona</p>
+                        <p className="text-xs text-snow/40">
+                            Fullstack Developer &amp; UI/UX Designer
+                        </p>
+                    </div>
+                </div>
+
+                <div className="flex items-center gap-2">
+                    <a href="#home" className={linkClass} aria-label="Back to top">
+                        <ArrowUp2 size={18} variant="Bold" color="currentColor" />
+                    </a>
+                </div>
+            </div>
+
+            <p className="mt-8 text-center text-xs text-snow/30 md:text-left">
+                © {year} Orn Bona. Designed &amp; built with React and Tailwind CSS.
+            </p>
+        </footer>
     );
 }

@@ -1,6 +1,49 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #212121;
+    --color-secondary: #383838;
+    --color-wild-sand: #f6f6f6;
+    --color-black: #161616;
+    --color-snow: #f6f4fa;
+    --color-background: #f1f2f5;
+    --color-custom-purple: #755fff;
+    --color-silver: #c1c1c1;
+
+    --animate-nudge: nudge 1.6s ease-in-out infinite;
+    --animate-draw: draw 0.55s cubic-bezier(0.65, 0, 0.35, 1) both;
+    --animate-pop: pop 0.32s ease-out;
+
+    @keyframes draw {
+        from {
+            clip-path: inset(0 100% 0 0);
+        }
+        to {
+            clip-path: inset(0 0 0 0);
+        }
+    }
+    @keyframes pop {
+        0% {
+            transform: scale(0.7);
+        }
+        55% {
+            transform: scale(1.15);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes nudge {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(3px);
+        }
+    }
+}
 
 @layer base {
     *,
@@ -10,48 +53,36 @@
     }
 
     body {
+        margin: 0;
         background: #161616;
         font-family: "Open Sans", sans-serif;
         line-height: 1.6;
         font-optical-sizing: auto;
+        overflow-x: hidden;
     }
 
     html {
         color-scheme: dark only;
+        scroll-behavior: smooth;
     }
 
     [data-theme="light"] {
         color-scheme: light only;
     }
 
-    body::before {
-        --size: 25px;
-        --line: color-mix(in lch, canvasText, transparent 70%);
-        content: "";
-        height: 100vh;
-        width: 100vw;
-        position: fixed;
-        background: linear-gradient(
-                    90deg,
-                    var(--line) 1px,
-                    transparent 1px var(--size)
-                )
-                50% 50% / var(--size) var(--size),
-            linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50%
-                50% / var(--size) var(--size);
-        mask: linear-gradient(
-            -20deg,
-            transparent 50%,
-            rgba(255, 255, 255, 0.183)
-        );
-        top: 0;
-        transform-style: flat;
-        pointer-events: none;
-        z-index: -1;
-    }
-
     .button-link {
         @apply flex gap-x-2 bg-secondary hover:bg-secondary/60 rounded-lg px-3 py-2 text-sm md:text-base;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
     }
 }
 
@@ -61,7 +92,7 @@
 }
 
 ::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
     background: transparent !important;
 }
 
@@ -70,13 +101,13 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #4747477c;
+    background: #47474754;
     border-radius: 10px;
     transition: 0.05s;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #30303099;
+    background: #3030307e;
 }
 
 ::-webkit-scrollbar:horizontal {

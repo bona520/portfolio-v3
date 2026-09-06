@@ -3,6 +3,7 @@ import image from "@rollup/plugin-image";
 import resolve, { nodeResolve } from "@rollup/plugin-node-resolve";
 import terser from "@rollup/plugin-terser";
 import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 
 export default (({mode}: { mode: string }) => {
@@ -53,6 +54,6 @@ export default (({mode}: { mode: string }) => {
 			},
 			manifest: true, // Generate manifest.json file
 		},
-		plugins: [react()],
+		plugins: [react(), tailwindcss()],
 	});
 });
