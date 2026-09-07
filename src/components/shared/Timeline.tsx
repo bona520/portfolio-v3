@@ -13,6 +13,7 @@ import TimelineDecor from "@shared/TimelineDecor";
 export type TimelineEntry = {
     title: string;
     subtitle?: string;
+    description?: string;
     meta: string[];
     badge?: string;
     icon?: Icon;
@@ -157,6 +158,12 @@ export default function Timeline({ id, heading, entries, defaultIcon, decor }: P
                                             ))}
                                         </div>
                                     </div>
+
+                                    {item.description && (
+                                        <p className="mt-3 max-w-2xl text-sm leading-7 text-snow/55">
+                                            {item.description}
+                                        </p>
+                                    )}
                                 </div>
                             </motion.div>
                         );

@@ -1,8 +1,8 @@
 import { motion, useReducedMotion, type Variants } from "motion/react";
 import me from "@assets/images/me.png";
 import PkaRomdoulHeroOne from "@svg/PkaRomdoulHeroOne";
-import PkaRomdoulHeroTwo from "@svg/PkaRomdoulHeroTwo";
-import PkaRomdoulHeroThree from "@svg/PkaRomdoulHeroThree";
+import LotusTwo from "@svg/LotusTwo";
+import KbachPka from "@svg/KbachPka";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -40,7 +40,7 @@ export default function About() {
                 animate={reduce ? undefined : { rotate: 360 }}
                 transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
             >
-                <PkaRomdoulHeroThree className="h-auto w-full" />
+                <KbachPka className="h-auto w-full" />
             </motion.div>
 
             {/* smaller pka, bottom-right, drifting */}
@@ -50,7 +50,7 @@ export default function About() {
                 animate={reduce ? undefined : { y: [0, -14, 0], rotate: [0, 10, 0] }}
                 transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
             >
-                <PkaRomdoulHeroTwo className="h-auto w-full" />
+                <LotusTwo className="h-auto w-full" />
             </motion.div>
 
             <motion.h1 {...reveal} custom={0} className="text-2xl font-bold lg:text-4xl">
@@ -140,7 +140,7 @@ export default function About() {
 
                     <div className="mt-3 flex items-center gap-2 text-xs font-medium text-snow/40">
                         <span className="h-1.5 w-1.5 rounded-full bg-custom-purple" />
-                        On the road, somewhere in Cambodia
+                        On the road, Phnom Aura in Cambodia
                     </div>
                 </motion.div>
             </div>

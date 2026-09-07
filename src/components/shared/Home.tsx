@@ -217,8 +217,14 @@ const TECH = [
     { name: "Illustrator", Icon: Illustrator },
 ];
 
+// first paid role (design work) — Dec 2019
+const CAREER_START = new Date("2019-12-01");
+const yearsOfExperience = Math.floor(
+    (Date.now() - CAREER_START.getTime()) / (365.25 * 24 * 60 * 60 * 1000)
+);
+
 const FACTS = [
-    { label: "Experience", value: "6+ years" },
+    { label: "Experience", value: `${yearsOfExperience}+ years` },
     { label: "Based in", value: "Cambodia" },
     { label: "Focus", value: "Web & design" },
 ];
