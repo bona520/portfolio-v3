@@ -140,7 +140,7 @@ export default function About() {
 
                     <div className="mt-3 flex items-center gap-2 text-xs font-medium text-snow/40">
                         <span className="h-1.5 w-1.5 rounded-full bg-custom-purple" />
-                        On the road, Phnom Aura in Cambodia
+                        On the road, Phnom Aural in Cambodia
                     </div>
                 </motion.div>
             </div>
