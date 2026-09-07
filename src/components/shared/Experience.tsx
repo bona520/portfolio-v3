@@ -1,3 +1,4 @@
+import { Briefcase } from "iconsax-react";
 import experience from "@data/experience.json";
 import Timeline, { type TimelineEntry } from "@shared/Timeline";
 
@@ -30,7 +31,13 @@ export default function Experience() {
 
     return (
         <div className="mt-8 md:mt-28">
-            <Timeline id="experience" heading="Experience" entries={entries} />
+            <Timeline
+                id="experience"
+                heading="Experience"
+                entries={entries}
+                defaultIcon={Briefcase}
+                decor
+            />
         </div>
     );
 }

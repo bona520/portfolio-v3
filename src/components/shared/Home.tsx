@@ -19,7 +19,7 @@ import Illustrator from "@svg/Illstrator";
 import Figma from "@svg/Figma";
 import KbachPattern from "@svg/KbachPattern";
 import NagaHero from "@svg/NagaHero";
-import PkaRomdoulHeroOne from "@svg/PkaRomdoulHeroOne";
+import PkaRomdoul from "@svg/PkaRomdoul";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -113,15 +113,15 @@ function NameHeadline() {
 
 /**
  * Role line — two roles set apart by weight and colour, not decoration:
- * "Fullstack Developer" recedes, "UI/UX Designer" is bright with a small pen mark.
+ * "Fullstack Developer" recedes, "UI/UX Designer" is bright inside a focus frame.
  */
 function RoleLine({ className, delay = 0.95 }: { className?: string; delay?: number }) {
     const reduce = useReducedMotion();
-    const label = "Fullstack Developer & UI/UX Designer";
+    const label = "Fullstack Developer and UI/UX Designer";
     const lead: { w: string; c: string }[] = [
-        { w: "Fullstack", c: "text-snow/75" },
-        { w: "Developer", c: "text-snow/75" },
-        { w: "/", c: "text-custom-purple" },
+        { w: "Fullstack", c: "inline-block text-snow/75" },
+        { w: "Developer", c: "inline-block text-snow/75" },
+        { w: "/", c: "hidden text-custom-purple sm:inline-block" },
     ];
 
     return (
@@ -129,7 +129,7 @@ function RoleLine({ className, delay = 0.95 }: { className?: string; delay?: num
             {lead.map(({ w, c }, i) => (
                 <Fragment key={i}>
                     <motion.span
-                        className={`inline-block ${c}`}
+                        className={c}
                         initial={reduce ? false : { opacity: 0, y: 14 }}
                         animate={reduce ? undefined : { opacity: 1, y: 0 }}
                         transition={{ delay: delay + i * 0.06, duration: 0.45, ease: EASE }}
@@ -138,82 +138,71 @@ function RoleLine({ className, delay = 0.95 }: { className?: string; delay?: num
                     </motion.span>{" "}
                 </Fragment>
             ))}
-            <span className="relative inline-block font-semibold text-white">
-                <motion.span
-                    className="inline-block"
-                    initial={reduce ? false : { opacity: 0, y: 14 }}
-                    animate={reduce ? undefined : { opacity: 1, y: 0 }}
-                    transition={{ delay: delay + 0.18, duration: 0.45, ease: EASE }}
-                >
-                    UI/UX&nbsp;Designer
-                </motion.span>
-                <svg
-                    aria-hidden
-                    viewBox="0 0 240 20"
-                    preserveAspectRatio="none"
-                    fill="none"
-                    className="absolute bottom-[-0.14em] left-0 h-[0.36em] w-full overflow-visible text-custom-purple"
-                >
-                    {/* main stroke — wavy, with a little pen-lift hook at the end */}
-                    <motion.path
-                        d="M3 11C41 9 74 13 113 10C149 8 187 12 226 9C231 8.6 234 7.6 230 6.8"
-                        stroke="currentColor"
-                        strokeWidth="2.4"
-                        strokeLinecap="round"
-                        vectorEffect="non-scaling-stroke"
-                        initial={reduce ? false : { pathLength: 0, opacity: 0 }}
-                        animate={reduce ? undefined : { pathLength: 1, opacity: 1 }}
-                        transition={{
-                            pathLength: { delay: delay + 0.82, duration: 0.5, ease: EASE },
-                            opacity: { delay: delay + 0.82, duration: 0.01 },
-                        }}
-                    />
-                    {/* faint second pass — a real marker never retraces itself exactly */}
-                    <motion.path
-                        d="M9 13C44 12 79 14.4 118 12.6C154 11 189 13.4 216 12"
-                        stroke="currentColor"
-                        strokeWidth="1.6"
-                        strokeLinecap="round"
-                        vectorEffect="non-scaling-stroke"
-                        initial={reduce ? false : { pathLength: 0, opacity: 0 }}
-                        animate={reduce ? undefined : { pathLength: 1, opacity: 0.4 }}
-                        transition={{
-                            pathLength: { delay: delay + 1.12, duration: 0.32, ease: EASE },
-                            opacity: { delay: delay + 1.12, duration: 0.01 },
-                        }}
-                    />
-                </svg>
-            </span>{" "}
-            <motion.svg
-                aria-hidden
-                viewBox="0 0 24 24"
-                fill="none"
-                className="inline-block h-[0.82em] w-[0.82em] translate-y-[-0.06em] text-custom-purple"
-                initial={reduce ? false : { opacity: 0, scale: 0.5, rotate: -12 }}
-                animate={reduce ? undefined : { opacity: 1, scale: 1, rotate: 0 }}
-                transition={{
-                    delay: delay + 0.5,
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 15,
-                }}
-            >
-                <path
-                    d="M12 20h9"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                />
-                <path
-                    d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                />
-            </motion.svg>
+            <FocusRole reduce={reduce} delay={delay} />
         </p>
+    );
+}
+
+/**
+ * "UI/UX Designer" framed like a camera viewfinder — four corner brackets that
+ * lock onto the words, a faint purple plate behind, and a slow focus-breath.
+ */
+function FocusRole({ reduce, delay }: { reduce: boolean | null; delay: number }) {
+    const corners = [
+        "left-0 top-0 border-l-2 border-t-2 rounded-tl-[3px]",
+        "right-0 top-0 border-r-2 border-t-2 rounded-tr-[3px]",
+        "left-0 bottom-0 border-l-2 border-b-2 rounded-bl-[3px]",
+        "right-0 bottom-0 border-r-2 border-b-2 rounded-br-[3px]",
+    ];
+    // each corner starts nudged diagonally outward, then snaps in
+    const offsets = [
+        { x: -6, y: -6 },
+        { x: 6, y: -6 },
+        { x: -6, y: 6 },
+        { x: 6, y: 6 },
+    ];
+
+    return (
+        <span className="relative inline-block px-[0.42em] py-[0.14em] font-semibold text-white sm:mx-[0.15em]">
+            <motion.span
+                aria-hidden
+                className="absolute inset-0 -z-10 rounded-sm bg-custom-purple/8"
+                initial={reduce ? false : { opacity: 0 }}
+                animate={reduce ? undefined : { opacity: 1 }}
+                transition={{ delay: delay + 0.18, duration: 0.45, ease: EASE }}
+            />
+            <motion.span
+                className="inline-block"
+                initial={reduce ? false : { opacity: 0, y: 14 }}
+                animate={reduce ? undefined : { opacity: 1, y: 0 }}
+                transition={{ delay: delay + 0.18, duration: 0.45, ease: EASE }}
+            >
+                UI/UX&nbsp;Designer
+            </motion.span>
+
+            <motion.span
+                aria-hidden
+                className="pointer-events-none absolute inset-y-[-0.18em] inset-x-[-0.08em] block sm:inset-x-[-0.18em]"
+                animate={
+                    reduce ? undefined : { scale: [1, 1.035, 1], opacity: [1, 0.75, 1] }
+                }
+                transition={{ delay: delay + 1.3, duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
+            >
+                {corners.map((c, i) => (
+                    <motion.span
+                        key={i}
+                        className={`absolute h-[0.5em] w-[0.5em] border-custom-purple ${c}`}
+                        initial={reduce ? false : { opacity: 0, ...offsets[i] }}
+                        animate={reduce ? undefined : { opacity: 1, x: 0, y: 0 }}
+                        transition={{
+                            delay: delay + 0.62 + i * 0.07,
+                            duration: 0.4,
+                            ease: EASE,
+                        }}
+                    />
+                ))}
+            </motion.span>
+        </span>
     );
 }
 
@@ -231,7 +220,7 @@ const TECH = [
 const FACTS = [
     { label: "Experience", value: "6+ years" },
     { label: "Based in", value: "Cambodia" },
-    { label: "Focus", value: "Web apps & design" },
+    { label: "Focus", value: "Web & design" },
 ];
 
 type Node = {
@@ -358,7 +347,7 @@ export default function Home() {
     return (
         <section
             id="home"
-            className="relative flex h-dvh scroll-mt-24 flex-col justify-center overflow-hidden pt-24 pb-16 md:pt-28"
+            className="relative flex min-h-dvh scroll-mt-24 flex-col justify-center overflow-hidden pt-20 pb-28 md:pt-28 md:pb-16"
         >
             {/* decorative kbach backdrop */}
             <KbachPattern className="pointer-events-none opacity-40 absolute -top-24 left-1/2 -z-10 h-[130%] w-[130%] -translate-x-1/2 text-custom-purple/[0.07] [-webkit-mask-image:radial-gradient(60%_55%_at_45%_40%,#000,transparent_72%)] [mask-image:radial-gradient(60%_55%_at_45%_40%,#000,transparent_72%)]" />
@@ -371,7 +360,7 @@ export default function Home() {
                 transition={{ delay: 0.35, duration: 1, ease: EASE }}
                 className="pointer-events-none absolute top-3 left-3 z-0 hidden w-12 opacity-80 md:block lg:top-5 lg:left-7 lg:w-16"
             >
-                <PkaRomdoulHeroOne className="h-auto w-full drop-shadow-[0_4px_20px_rgba(194,156,37,0.25)]" />
+                <PkaRomdoul className="h-auto w-full drop-shadow-[0_4px_20px_rgba(194,156,37,0.25)] animate-hero-pka-drift" />
             </motion.div>
 
 
@@ -381,13 +370,13 @@ export default function Home() {
                 initial={{ opacity: 0, x: 24, y: 24 }}
                 animate={{ opacity: 1, x: 0, y: 0 }}
                 transition={{ delay: 0.4, duration: 1.1, ease: EASE }}
-                className="pointer-events-none absolute right-0 bottom-0 z-999! hidden h-[clamp(6rem,22vh,20rem)] w-[clamp(5rem,12vw,15rem)] text-white/6  md:block"
+                className="pointer-events-none absolute right-0 bottom-0 z-999! hidden h-[clamp(5rem,18vh,20rem)] w-[clamp(3.5rem,9vw,15rem)] text-white/6  md:block"
             >
                 <NagaHero className="absolute opacity-5 z-50 right-0 bottom-0 h-auto w-full" />
             </motion.div>
 
-            <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:px-8">
-                <div className="max-w-2xl">
+            <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:px-8">
+                <div className="min-w-0 max-w-2xl">
                     <motion.span
                         custom={0.05}
                         initial="hidden"
@@ -415,7 +404,7 @@ export default function Home() {
                     </h1>
 
                     <RoleLine
-                        className="mt-5 text-xl font-medium text-snow/85 md:text-2xl"
+                        className="mt-5 text-xl font-medium leading-[1.75] text-snow/85 sm:leading-snug md:text-2xl"
                         delay={0.95}
                     />
 
@@ -423,7 +412,7 @@ export default function Home() {
                         initial={{ opacity: 0, y: 12, filter: "blur(8px)" }}
                         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                         transition={{ delay: 1.25, duration: 0.7, ease: EASE }}
-                        className="mt-5 max-w-xl text-sm leading-7 text-snow/50 md:text-base md:leading-8"
+                        className="mt-4 max-w-xl text-sm leading-7 text-snow/50 sm:mt-5 md:text-base md:leading-8"
                     >
                         I build responsive, accessible web apps where thoughtful design meets
                         solid engineering.
@@ -434,13 +423,13 @@ export default function Home() {
                         initial="hidden"
                         animate="show"
                         variants={rise}
-                        className="mt-9 flex flex-wrap items-center gap-3"
+                        className="mt-8 flex items-center gap-3 sm:mt-9"
                     >
                         <a
-                            href="#experience"
-                            className="group inline-flex items-center gap-2.5 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-black transition-transform hover:-translate-y-0.5"
+                            href="#portfolio"
+                            className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-black transition-transform hover:-translate-y-0.5 sm:flex-none"
                         >
-                            View my work
+                            Portfolio
                             <ArrowRight
                                 size={16}
                                 color="currentColor"
@@ -449,7 +438,7 @@ export default function Home() {
                         </a>
                         <a
                             href="#contact"
-                            className="inline-flex items-center rounded-full border border-white/15 px-6 py-3.5 text-sm font-medium text-snow/80 transition-colors hover:border-white/40 hover:text-white"
+                            className="inline-flex flex-1 items-center justify-center rounded-full border border-white/15 px-6 py-3.5 text-sm font-medium text-snow/80 transition-colors hover:border-white/40 hover:text-white sm:flex-none"
                         >
                             Get in touch
                         </a>
@@ -460,7 +449,7 @@ export default function Home() {
                         initial="hidden"
                         animate="show"
                         variants={rise}
-                        className="mt-12 flex flex-wrap gap-x-10 gap-y-4 border-t border-white/10 pt-6"
+                        className="mt-9 grid grid-cols-3 gap-x-4 gap-y-4 border-t border-white/10 pt-6 sm:mt-12 sm:flex sm:flex-wrap sm:gap-x-10"
                     >
                         {FACTS.map(({ label, value }) => (
                             <div key={label}>
@@ -478,7 +467,7 @@ export default function Home() {
                         initial="hidden"
                         animate="show"
                         variants={rise}
-                        className="mt-8 flex flex-wrap items-center gap-2 lg:hidden"
+                        className="mt-7 flex flex-wrap items-center gap-2 sm:mt-8 lg:hidden"
                     >
                         {TECH.map(({ name, Icon }) => (
                             <li
@@ -498,7 +487,7 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="pointer-events-none absolute inset-x-0 bottom-6 z-10 mx-auto hidden w-full max-w-7xl px-4 sm:px-6 md:block lg:px-8">
+            <div className="pointer-events-none absolute inset-x-0 bottom-16 z-10 mx-auto hidden w-full max-w-7xl px-4 sm:px-6 md:block lg:px-8">
                 <motion.a
                     href="#about"
                     initial={{ opacity: 0 }}

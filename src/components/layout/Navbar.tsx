@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react";
 import Squiggle from "@svg/Squiggle";
-import { Book1, Briefcase, Home2, Notepad2, type Icon } from "iconsax-react";
+import { Book1, Briefcase, Gallery, Home2, Notepad2, Sms, type Icon } from "iconsax-react";
 import Logo from "@svg/Logo";
 
-type Section = { id: string; label: string; icon: Icon };
+type Section = { id: string; label: string; icon: Icon; mobile?: boolean };
 
 const SECTIONS: Section[] = [
     { id: "home", label: "Home", icon: Home2 },
     { id: "about", label: "About", icon: Notepad2 },
     { id: "experience", label: "Experience", icon: Briefcase },
-    { id: "education", label: "Education", icon: Book1 },
+    { id: "portfolio", label: "Portfolio", icon: Gallery },
+    { id: "education", label: "Education", icon: Book1, mobile: false },
+    { id: "contact", label: "Contact", icon: Sms },
 ];
+
+const MOBILE_SECTIONS = SECTIONS.filter((s) => s.mobile !== false);
 
 export default function Navbar() {
     const [active, setActive] = useState("home");
+    const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
         const els = SECTIONS.map((s) => document.getElementById(s.id)).filter(
@@ -36,7 +41,9 @@ export default function Navbar() {
 
         const onScroll = () => {
             if (window.scrollY < 120) setActive("home");
+            setScrolled(window.scrollY > 24);
         };
+        onScroll();
         window.addEventListener("scroll", onScroll, { passive: true });
         return () => {
             observer.disconnect();
@@ -46,17 +53,24 @@ export default function Navbar() {
 
     return (
         <>
-            {/* desktop — sticky pill */}
-            <nav className="sticky top-4 z-40 mx-auto hidden h-14 w-[min(600px,calc(100%-28px))] items-center justify-between rounded-full border border-white/10 bg-primary/70 pr-3 pl-6 backdrop-blur-xl md:flex">
+            {/* desktop — sticky pill: transparent at the top, condenses on scroll */}
+            <nav
+                className={[
+                    "sticky top-4 z-40 mx-auto hidden h-14 items-center justify-between rounded-full border pr-3 pl-6 transition-all duration-300 ease-out md:flex",
+                    scrolled
+                        ? "w-[min(560px,calc(100%-28px))] border-white/10 bg-primary/70 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+                        : "w-[min(820px,calc(100%-32px))] border-transparent bg-transparent",
+                ].join(" ")}
+            >
                 <a href="#home" aria-label="Home" className="shrink-0 transition-opacity hover:opacity-70">
                     <Logo className="h-7 w-auto" />
                 </a>
-                <div className="flex items-center gap-1 text-sm font-medium">
+                <div className="flex items-center gap-0.5 text-sm font-medium">
                     {SECTIONS.slice(1).map(({ id, label }) => (
                         <a
                             key={id}
                             href={`#${id}`}
-                            className={`px-3 py-1.5 transition-colors ${active === id ? "text-white" : "text-snow/50 hover:text-white"
+                            className={`px-2.5 py-1.5 transition-colors ${active === id ? "text-white" : "text-snow/50 hover:text-white"
                                 }`}
                         >
                             <span className="relative">
@@ -76,8 +90,8 @@ export default function Navbar() {
                 style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
             >
                 <div className="overflow-hidden rounded-[26px] border border-white/10 bg-primary/85 shadow-[0_2px_24px_rgba(0,0,0,0.4)] backdrop-blur-2xl">
-                    <div className="grid grid-cols-4">
-                        {SECTIONS.map(({ id, label, icon: TabIcon }) => (
+                    <div className="grid grid-cols-5">
+                        {MOBILE_SECTIONS.map(({ id, label, icon: TabIcon }) => (
                             <a
                                 key={id}
                                 href={`#${id}`}

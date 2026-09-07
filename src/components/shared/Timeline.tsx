@@ -7,18 +7,23 @@ import {
     useTransform,
     type Variants,
 } from "motion/react";
+import { type Icon } from "iconsax-react";
+import TimelineDecor from "@shared/TimelineDecor";
 
 export type TimelineEntry = {
     title: string;
     subtitle?: string;
     meta: string[];
     badge?: string;
+    icon?: Icon;
 };
 
 type Props = {
     id: string;
     heading: string;
     entries: TimelineEntry[];
+    defaultIcon: Icon;
+    decor?: boolean;
 };
 
 const cardV: Variants = {
@@ -30,7 +35,16 @@ const cardV: Variants = {
     },
 };
 
-export default function Timeline({ id, heading, entries }: Props) {
+const badgeV: Variants = {
+    hidden: { scale: 0.3, opacity: 0 },
+    show: {
+        scale: 1,
+        opacity: 1,
+        transition: { type: "spring", stiffness: 380, damping: 22, delay: 0.05 },
+    },
+};
+
+export default function Timeline({ id, heading, entries, defaultIcon, decor }: Props) {
     const trackRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: trackRef,
@@ -49,7 +63,9 @@ export default function Timeline({ id, heading, entries }: Props) {
     });
 
     return (
-        <section id={id} className="w-full scroll-mt-24">
+        <section id={id} className="relative w-full scroll-mt-24">
+            {decor && <TimelineDecor />}
+
             <motion.h1
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -62,7 +78,7 @@ export default function Timeline({ id, heading, entries }: Props) {
 
             <div ref={trackRef} className="relative mt-8 md:mt-12">
                 {/* rail */}
-                <div className="pointer-events-none absolute top-3 bottom-3 left-1.75 w-px md:left-2">
+                <div className="pointer-events-none absolute top-6 bottom-6 left-5 w-px">
                     <div className="absolute inset-0 bg-white/10" />
                     <motion.div
                         style={{ scaleY: progress }}
@@ -77,6 +93,7 @@ export default function Timeline({ id, heading, entries }: Props) {
                 <div className="space-y-3 md:space-y-4">
                     {entries.map((item, i) => {
                         const active = i < passed || i < 1;
+                        const Ico = item.icon ?? defaultIcon;
 
                         return (
                             <motion.div
@@ -85,22 +102,27 @@ export default function Timeline({ id, heading, entries }: Props) {
                                 initial="hidden"
                                 whileInView="show"
                                 viewport={{ once: true, margin: "-12% 0px -12% 0px" }}
-                                className="relative pl-9 md:pl-12"
+                                className="relative pl-14 md:pl-18"
                             >
-                                {/* node */}
+                                {/* node badge */}
                                 <motion.span
-                                    initial={{ scale: 0.3, opacity: 0 }}
-                                    whileInView={{ scale: 1, opacity: 1 }}
-                                    viewport={{ once: true, margin: "-40% 0px -40% 0px" }}
-                                    transition={{ type: "spring", stiffness: 380, damping: 22 }}
-                                    className={`absolute top-5.5 left-1.75 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full border-2 transition-colors duration-500 md:left-2 ${
+                                    variants={badgeV}
+                                    className={`absolute top-4 left-5 z-10 flex h-9 w-9 -translate-x-1/2 items-center justify-center rounded-xl border transition-colors duration-500 md:top-4.5 md:h-10 md:w-10 ${
                                         active
-                                            ? "border-custom-purple bg-custom-purple shadow-[0_0_0_4px_rgba(117,95,255,0.15)]"
-                                            : "border-white/20 bg-primary"
+                                            ? "border-custom-purple/40 bg-custom-purple/15 text-custom-purple shadow-[0_0_0_4px_rgba(117,95,255,0.10)]"
+                                            : "border-white/10 bg-primary text-snow/40"
                                     }`}
                                 >
+                                    <Ico
+                                        size={18}
+                                        variant={active ? "Bold" : "Linear"}
+                                        color="currentColor"
+                                    />
                                     {item.badge && (
-                                        <span className="absolute inset-0 animate-ping rounded-full bg-custom-purple opacity-60" />
+                                        <span className="absolute -top-0.5 -right-0.5 flex h-2.5 w-2.5">
+                                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-custom-purple opacity-70" />
+                                            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-custom-purple ring-2 ring-black" />
+                                        </span>
                                     )}
                                 </motion.span>
 

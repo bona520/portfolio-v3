@@ -153,6 +153,14 @@
   animation: wave-draw 0.45s ease-out forwards;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  /* Pka Romdoul #1 — a petal caught in a breeze: slow diagonal drift + tilt */
+  @keyframes hero-pka-drift {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+    50%      { transform: translate3d(10px, -16px, 0) rotate(7deg); }
+  }
+  .animate-hero-pka-drift { animation: hero-pka-drift 11s ease-in-out infinite; }
+}
 @media screen and (min-width: 1280px) {
     body::before {
         --size: 45px !important;

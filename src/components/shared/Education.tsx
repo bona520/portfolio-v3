@@ -1,3 +1,4 @@
+import { Teacher } from "iconsax-react";
 import education from "@data/education.json";
 import Timeline, { type TimelineEntry } from "@shared/Timeline";
 
@@ -10,7 +11,12 @@ export default function Education() {
 
     return (
         <div className="mt-12">
-            <Timeline id="education" heading="Education" entries={entries} />
+            <Timeline
+                id="education"
+                heading="Education"
+                entries={entries}
+                defaultIcon={Teacher}
+            />
         </div>
     );
 }

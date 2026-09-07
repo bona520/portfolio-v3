@@ -1,9 +1,11 @@
 import About from "@shared/About";
+import Contact from "@shared/Contact";
 import Education from "@shared/Education";
 import Experience from "@shared/Experience";
 import Footer from "@layout/Footer";
 import Home from "@shared/Home";
 import Navbar from "@layout/Navbar";
+import Portfolio from "@shared/Portfolio";
 import ScrollToTop from "@shared/ScrollToTop";
 
 export default function App() {
@@ -18,9 +20,11 @@ export default function App() {
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <About />
         <Experience />
+        <Portfolio />
         <Education />
-        <Footer />
+        <Contact />
       </main>
+      <Footer />
       <ScrollToTop />
     </div>
   );
