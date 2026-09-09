@@ -3,11 +3,21 @@ import education from "@data/education.json";
 import Timeline, { type TimelineEntry } from "@shared/Timeline";
 import KbachTop from "@svg/KbachTop";
 import KbachBottom from "@svg/KbachBottom";
+import setec from "@assets/edu-logo/setec.png";
+import reanweb from "@assets/edu-logo/reanweb.jpg";
+import graphic from "@assets/edu-logo/graphic.jpg";
+import angroka from "@assets/edu-logo/angroka.jpg";
+
+// keyed by the `logo` field in education.json
+const LOGOS: Record<string, string> = { setec, reanweb, graphic, angroka };
 
 export default function Education() {
     const entries: TimelineEntry[] = education.map((item) => ({
         title: item.name.trim(),
         subtitle: item.major.replace(/\s+/g, " ").trim(),
+        location: item.location,
+        link: item.link,
+        logo: item.logo ? LOGOS[item.logo] : undefined,
         meta: [`${item.startDate} – ${item.endDate}`],
     }));
 

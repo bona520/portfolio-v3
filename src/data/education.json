@@ -2,28 +2,42 @@
     {
         "id": 1,
         "name": "SETEC Institute",
-        "major": "Bachelor Degree in Management Information System ",
+        "major": "Bachelor Degree in Management Information System",
+        "location": "Phnom Penh",
+        "logo": "setec",
         "startDate": "Oct 2018",
-        "endDate": "Aug 2022"
+        "endDate": "Aug 2022",
+        "link": { "label": "setecu.com", "href": "https://setecu.com" }
     },
     {
         "id": 2,
         "name": "Rean Web",
-        "major": "Short Course  PHP Web development",
+        "major": "Short Course · PHP Web Development",
+        "location": "Phnom Penh",
+        "logo": "reanweb",
         "startDate": "Oct 2020",
-        "endDate": "Feb 2021"
+        "endDate": "Feb 2021",
+        "link": { "label": "reanweb.com", "href": "https://www.reanweb.com" }
     },
     {
         "id": 3,
-        "name": "Rean Design",
-        "major": "Short Course Design",
+        "name": "រៀនរចនាក្រាហ្វិច-Graphic Design",
+        "major": "Short Course",
+        "location": "Phnom Penh",
+        "logo": "graphic",
         "startDate": "May 2020",
-        "endDate": "Jul 2020"
+        "endDate": "Jul 2020",
+        "link": {
+            "label": "facebook.com/reanrachana",
+            "href": "https://www.facebook.com/reanrachana"
+        }
     },
     {
         "id": 4,
-        "name": "Angroka High School ",
+        "name": "Angroka High School",
         "major": "High School",
+        "location": "Takeo Province",
+        "logo": "angroka",
         "startDate": "Oct 2015",
         "endDate": "Aug 2018"
     }

@@ -1,30 +1,57 @@
 [
     {
         "id": 1,
-        "name": "CA Invention",
-        "position": "UI UX Design | Junior Frontend Developer",
-        "duration": "10 Months",
-        "date": "Aug 2022 - May 2023"
+        "name": "Code Aero Solutions Co., Ltd",
+        "position": "Fullstack Developer | UI/UX Design",
+        "logo": "codeaero",
+        "badge": "Current",
+        "startISO": "2023-06-01",
+        "duration": "",
+        "date": "Jun 2023 - Present",
+        "description": "Build landing pages, a POS, and management systems with React, Next.js, EJS and NestJS, and design their interfaces in Figma, Photoshop and Illustrator, including the full UI for a new system."
     },
     {
         "id": 2,
-        "name": "Phsar Tech Solutions Co., Ltd",
-        "position": "Junior Backend Developer",
+        "name": "CA Invention",
+        "position": "UI UX Design | Junior Frontend Developer",
+        "logo": "ca",
+        "badge": "",
+        "startISO": "",
         "duration": "10 Months",
-        "date": "Oct 2021 - Jul 2022"
+        "date": "Aug 2022 - May 2023",
+        "description": "Built frontends and backends with React and Laravel, working from Figma designs, mainly an e-commerce platform, plus UI for other mobile and web-app systems."
     },
     {
         "id": 3,
-        "name": "Ninja Marketing Cambodia",
-        "position": "Graphic Design",
-        "duration": "7 Months",
-        "date": "Mar 2021 - Sep 2021"
+        "name": "Phsar Tech Solutions Co., Ltd",
+        "position": "Junior Backend Developer",
+        "logo": "phsartech",
+        "badge": "",
+        "startISO": "",
+        "duration": "10 Months",
+        "date": "Oct 2021 - Jul 2022",
+        "description": "Started as an intern in Laravel, HTML and CSS, then moved into a junior backend developer role."
     },
     {
         "id": 4,
-        "name": "Kampuh Trading Co., Ltd",
+        "name": "Ninja Marketing Cambodia",
         "position": "Graphic Design",
+        "logo": "ninja",
+        "badge": "",
+        "startISO": "",
+        "duration": "7 Months",
+        "date": "Mar 2021 - Sep 2021",
+        "description": "Designed poster and graphic content for social media."
+    },
+    {
+        "id": 5,
+        "name": "KAMPUH Trading Co., Ltd",
+        "position": "Graphic Design",
+        "logo": "kampuh",
+        "badge": "",
+        "startISO": "",
         "duration": "1 Year 3 Months",
-        "date": "Dec 2019 - Feb 2021"
+        "date": "Dec 2019 - Feb 2021",
+        "description": "Designed posters and graphics for social media, with occasional print work, banners and printed posters."
     }
 ]

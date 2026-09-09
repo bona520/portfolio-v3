@@ -1,6 +1,14 @@
 import { Briefcase } from "iconsax-react";
 import experience from "@data/experience.json";
 import Timeline, { type TimelineEntry } from "@shared/Timeline";
+import codeaero from "@assets/company-logo/codeaero.jpg";
+import ca from "@assets/company-logo/ca.jpeg";
+import phsartech from "@assets/company-logo/phsartech.png";
+import ninja from "@assets/company-logo/ninja.jpg";
+import kampuh from "@assets/company-logo/kampuh.png";
+
+// keyed by the `logo` field in experience.json
+const LOGOS: Record<string, string> = { codeaero, ca, phsartech, ninja, kampuh };
 
 function tenure(startISO: string) {
     const start = new Date(startISO);
@@ -14,34 +22,18 @@ function tenure(startISO: string) {
         .join(" ");
 }
 
-// keyed by company name — merged into the entries built from experience.json
-const DESCRIPTIONS: Record<string, string> = {
-    "CA Invention":
-        "Built frontends and backends with React and Laravel, working from Figma designs, mainly an e-commerce platform, plus UI for other mobile and web-app systems.",
-    "Phsar Tech Solutions Co., Ltd":
-        "Started as an intern in Laravel, HTML and CSS, then moved into a junior backend developer role.",
-    "Ninja Marketing Cambodia": "Designed poster and graphic content for social media.",
-    "Kampuh Trading Co., Ltd":
-        "Designed posters and graphics for social media, with occasional print work, banners and printed posters.",
-};
-
 export default function Experience() {
-    const entries: TimelineEntry[] = [
-        {
-            title: "Code Aero Solutions Co., Ltd",
-            subtitle: "Fullstack Developer · UI/UX Design",
-            description:
-                "Build landing pages, a POS, and management systems with React, Next.js, EJS and NestJS, and design their interfaces in Figma, Photoshop and Illustrator, including the full UI for a new system.",
-            meta: ["Jun 2023 – Present", tenure("2023-06-01")],
-            badge: "Current",
-        },
-        ...experience.map((item) => ({
-            title: item.name,
-            subtitle: item.position.replace(/\s*\|\s*/g, " · "),
-            description: DESCRIPTIONS[item.name.trim()],
-            meta: [item.date.replace(/\s*-\s*/g, " – "), item.duration],
-        })),
-    ];
+    const entries: TimelineEntry[] = experience.map((item) => ({
+        title: item.name,
+        subtitle: item.position.replace(/\s*\|\s*/g, " · "),
+        description: item.description || undefined,
+        logo: LOGOS[item.logo],
+        badge: item.badge || undefined,
+        meta: [
+            item.date.replace(/\s*-\s*/g, " – "),
+            item.startISO ? tenure(item.startISO) : item.duration,
+        ].filter(Boolean) as string[],
+    }));
 
     return (
         <div className="mt-8 md:mt-28">

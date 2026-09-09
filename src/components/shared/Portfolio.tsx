@@ -12,10 +12,13 @@ import {
     type Icon,
 } from "iconsax-react";
 import { motion, useReducedMotion, type Variants } from "motion/react";
+import projects from "@data/projects.json";
 import NextJSLogo from "@svg/NextJS";
 import NestJSLogo from "@svg/NestJS";
 import PostgreSQLLogo from "@svg/PostgreSQL";
 import PkaRomdoulLinear from "@svg/PkaRomdoulLinear";
+import atkhmer from "@assets/portfolio-logo/atkhmer.jpg";
+import ptastheap from "@assets/portfolio-logo/ptastheap.png";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -35,42 +38,20 @@ const reveal = {
     variants: rise,
 };
 
-type Project = {
-    name: string;
-    tagline: string;
-    blurb: string;
-    Icon: Icon;
-    features: { text: string; Icon: Icon }[];
-    stack: string[];
-    href?: string;
+// name → component, keyed by the `icon` fields in projects.json
+const ICONS: Record<string, Icon> = {
+    RouteSquare,
+    Calendar,
+    Ticket,
+    SecurityUser,
+    NotificationBing,
+    Category,
+    Shop,
+    UserOctagon,
 };
 
-const PROJECTS: Project[] = [
-    {
-        name: "At Khmer",
-        tagline: "Adventure trip booking",
-        blurb: "A booking platform for adventure trips a client-facing site to browse and book, an admin dashboard to manage trips, and instant booking alerts pushed through a Telegram bot.",
-        Icon: RouteSquare,
-        features: [
-            { Icon: Ticket, text: "Client browsing & booking flow" },
-            { Icon: SecurityUser, text: "Admin dashboard for trips & bookings" },
-            { Icon: NotificationBing, text: "Telegram bot booking notifications" },
-        ],
-        stack: ["Next.js", "NestJS", "PostgreSQL"],
-    },
-    {
-        name: "Ptas Theap",
-        tagline: "Wedding invites & vendor marketplace",
-        blurb: "A landing platform pairing customizable wedding-invitation templates with a vendor marketplace, plus a vendor admin to publish and manage service listings.",
-        Icon: Calendar,
-        features: [
-            { Icon: Category, text: "Invitation template gallery" },
-            { Icon: Shop, text: "Vendor service marketplace" },
-            { Icon: UserOctagon, text: "Vendor admin portal" },
-        ],
-        stack: ["Next.js", "NestJS", "PostgreSQL"],
-    },
-];
+// keyed by the `logo` field in projects.json
+const LOGOS: Record<string, string> = { atkhmer, ptastheap };
 
 const STACK_LOGOS: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
     "Next.js": NextJSLogo,
@@ -107,7 +88,9 @@ export default function Portfolio() {
             </motion.p>
 
             <div className="mt-8 grid gap-4 md:mt-10 md:grid-cols-2">
-                {PROJECTS.map((project, i) => {
+                {projects.map((project, i) => {
+                    const ProjectIcon = ICONS[project.icon];
+                    const logo = project.logo ? LOGOS[project.logo] : undefined;
                     const Wrapper = project.href ? "a" : "div";
                     return (
                         <motion.div key={project.name} {...reveal} custom={i + 2} className="h-full">
@@ -118,9 +101,20 @@ export default function Portfolio() {
                                 className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.02] p-5 transition-colors duration-300 hover:border-custom-purple/40 hover:bg-white/[0.035] md:p-6"
                             >
                                 <div className="flex items-start gap-4">
-                                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-custom-purple/25 bg-custom-purple/12 text-custom-purple">
-                                        <project.Icon size={20} variant="Bold" color="currentColor" />
-                                    </span>
+                                    {logo ? (
+                                        <img
+                                            src={logo}
+                                            alt={`${project.name} logo`}
+                                            loading="lazy"
+                                            className="h-11 w-11 shrink-0 rounded-xl object-cover ring-1 ring-white/10"
+                                        />
+                                    ) : (
+                                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-custom-purple/25 bg-custom-purple/12 text-custom-purple">
+                                            {ProjectIcon && (
+                                                <ProjectIcon size={20} variant="Bold" color="currentColor" />
+                                            )}
+                                        </span>
+                                    )}
                                     <div className="min-w-0 flex-1">
                                         <div className="flex items-center justify-between gap-3">
                                             <h2 className="text-base font-semibold text-white md:text-lg">
@@ -145,19 +139,24 @@ export default function Portfolio() {
                                 </p>
 
                                 <ul className="mt-4 space-y-2">
-                                    {project.features.map(({ Icon: FeatureIcon, text }) => (
-                                        <li
-                                            key={text}
-                                            className="flex items-center gap-2.5 text-sm text-snow/70"
-                                        >
-                                            <FeatureIcon
-                                                size={16}
-                                                color="currentColor"
-                                                className="shrink-0 text-custom-purple/70"
-                                            />
-                                            {text}
-                                        </li>
-                                    ))}
+                                    {project.features.map(({ icon, text }) => {
+                                        const FeatureIcon = ICONS[icon];
+                                        return (
+                                            <li
+                                                key={text}
+                                                className="flex items-center gap-2.5 text-sm text-snow/70"
+                                            >
+                                                {FeatureIcon && (
+                                                    <FeatureIcon
+                                                        size={16}
+                                                        color="currentColor"
+                                                        className="shrink-0 text-custom-purple/70"
+                                                    />
+                                                )}
+                                                {text}
+                                            </li>
+                                        );
+                                    })}
                                 </ul>
 
                                 <ul className="mt-auto flex flex-wrap gap-2 pt-5">

@@ -7,7 +7,7 @@ import {
     useTransform,
     type Variants,
 } from "motion/react";
-import { type Icon } from "iconsax-react";
+import { Location, ExportSquare, type Icon } from "iconsax-react";
 import TimelineDecor from "@shared/TimelineDecor";
 
 export type TimelineEntry = {
@@ -15,6 +15,9 @@ export type TimelineEntry = {
     subtitle?: string;
     description?: string;
     meta: string[];
+    location?: string;
+    link?: { label: string; href: string };
+    logo?: string;
     badge?: string;
     icon?: Icon;
 };
@@ -80,7 +83,7 @@ export default function Timeline({ id, heading, entries, defaultIcon, decor }: P
             <div ref={trackRef} className="relative mt-8 md:mt-12">
                 {/* rail */}
                 <div className="pointer-events-none absolute top-6 bottom-6 left-5 w-px">
-                    <div className="absolute inset-0 bg-white/10" />
+                    <div className="absolute inset-0 bg-[repeating-linear-gradient(to_bottom,rgba(255,255,255,0.18)_0_2px,transparent_2px_8px)]" />
                     <motion.div
                         style={{ scaleY: progress }}
                         className="absolute inset-0 origin-top bg-linear-to-b from-custom-purple to-custom-purple/30"
@@ -129,22 +132,62 @@ export default function Timeline({ id, heading, entries, defaultIcon, decor }: P
 
                                 <div className="rounded-2xl border border-white/6 bg-white/2 p-4 transition-colors duration-300 hover:border-white/12 hover:bg-white/4 md:p-5">
                                     <div className="flex flex-col gap-x-6 gap-y-2 sm:flex-row sm:items-start sm:justify-between">
-                                        <div className="min-w-0">
-                                            <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5">
-                                                <h3 className="text-base font-semibold text-white md:text-lg">
-                                                    {item.title}
-                                                </h3>
-                                                {item.badge && (
-                                                    <span className="rounded-full border border-custom-purple/30 bg-custom-purple/10 px-2 py-0.5 text-[10px] font-semibold tracking-wider text-custom-purple uppercase">
-                                                        {item.badge}
-                                                    </span>
+                                        <div className="flex min-w-0 gap-3.5">
+                                            {item.logo && (
+                                                <img
+                                                    src={item.logo}
+                                                    alt={`${item.title} logo`}
+                                                    loading="lazy"
+                                                    className="mt-0.5 h-10 w-10 shrink-0 rounded-lg object-cover ring-1 ring-white/10"
+                                                />
+                                            )}
+
+                                            <div className="min-w-0">
+                                                <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5">
+                                                    <h3 className="text-base font-semibold text-white md:text-lg">
+                                                        {item.title}
+                                                    </h3>
+                                                    {item.badge && (
+                                                        <span className="rounded-full border border-custom-purple/30 bg-custom-purple/10 px-2 py-0.5 text-[10px] font-semibold tracking-wider text-custom-purple uppercase">
+                                                            {item.badge}
+                                                        </span>
+                                                    )}
+                                                </div>
+                                                {item.subtitle && (
+                                                    <p className="mt-1.5 text-sm text-snow/65 md:text-[15px]">
+                                                        {item.subtitle}
+                                                    </p>
+                                                )}
+
+                                                {(item.location || item.link) && (
+                                                    <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs text-snow/45">
+                                                        {item.location && (
+                                                            <span className="inline-flex items-center gap-1">
+                                                                <Location
+                                                                    size={13}
+                                                                    variant="Bold"
+                                                                    color="currentColor"
+                                                                />
+                                                                {item.location}
+                                                            </span>
+                                                        )}
+                                                        {item.link && (
+                                                            <a
+                                                                href={item.link.href}
+                                                                target="_blank"
+                                                                rel="noreferrer noopener"
+                                                                className="inline-flex items-center gap-1 rounded-full border border-custom-purple/20 bg-custom-purple/5 px-2 py-0.5 text-custom-purple/85 transition-colors hover:border-custom-purple/40 hover:bg-custom-purple/10 hover:text-custom-purple"
+                                                            >
+                                                                <ExportSquare
+                                                                    size={12}
+                                                                    color="currentColor"
+                                                                />
+                                                                {item.link.label}
+                                                            </a>
+                                                        )}
+                                                    </div>
                                                 )}
                                             </div>
-                                            {item.subtitle && (
-                                                <p className="mt-1.5 text-sm text-snow/65 md:text-[15px]">
-                                                    {item.subtitle}
-                                                </p>
-                                            )}
                                         </div>
 
                                         <div className="shrink-0 text-xs text-snow/40 sm:text-right md:text-[13px]">

@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "At Khmer",
+        "tagline": "Adventure trip booking",
+        "blurb": "A booking platform for adventure trips a client-facing site to browse and book, an admin dashboard to manage trips, and instant booking alerts pushed through a Telegram bot.",
+        "icon": "RouteSquare",
+        "logo": "atkhmer",
+        "href": "",
+        "features": [
+            { "icon": "Ticket", "text": "Client browsing & booking flow" },
+            { "icon": "SecurityUser", "text": "Admin dashboard for trips & bookings" },
+            { "icon": "NotificationBing", "text": "Telegram bot booking notifications" }
+        ],
+        "stack": ["Next.js", "NestJS", "PostgreSQL"]
+    },
+    {
+        "id": 2,
+        "name": "Ptas Theap",
+        "tagline": "Wedding invites & vendor marketplace",
+        "blurb": "A landing platform pairing customizable wedding-invitation templates with a vendor marketplace, plus a vendor admin to publish and manage service listings.",
+        "icon": "Calendar",
+        "logo": "ptastheap",
+        "href": "",
+        "features": [
+            { "icon": "Category", "text": "Invitation template gallery" },
+            { "icon": "Shop", "text": "Vendor service marketplace" },
+            { "icon": "UserOctagon", "text": "Vendor admin portal" }
+        ],
+        "stack": ["Next.js", "NestJS", "PostgreSQL"]
+    }
+]
