@@ -2,7 +2,6 @@ import { Teacher } from "iconsax-react";
 import education from "@data/education.json";
 import Timeline, { type TimelineEntry } from "@shared/Timeline";
 import KbachTop from "@svg/KbachTop";
-import KbachBottom from "@svg/KbachBottom";
 import setec from "@assets/edu-logo/setec.png";
 import reanweb from "@assets/edu-logo/reanweb.jpg";
 import graphic from "@assets/edu-logo/graphic.jpg";
@@ -24,8 +23,7 @@ export default function Education() {
     return (
         <div className="relative mt-12">
             <KbachTop className="pointer-events-none absolute top-0 left-0 -z-10 hidden w-44 text-custom-purple opacity-[0.12] sm:block lg:w-56" />
-            <KbachBottom className="pointer-events-none absolute right-0 bottom-0 -z-10 hidden w-44 text-custom-purple opacity-[0.12] sm:block lg:w-56" />
-
+        
             <Timeline
                 id="education"
                 heading="Education"
